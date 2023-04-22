@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="fixed top-0 w-full flex justify-between p-5">
+        <header className="top-0 w-full flex justify-between p-5">
           <Link href="" className="font-bold">Junho's Blog</Link>
           <div className="flex gap-4 text-gray-400">
             <Link href="">Home</Link>
