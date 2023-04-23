@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import profileImage from "../../public/images/profile.png";
 import Link from "next/link";
 import data from "../../data/posts.json";
+import { CarouselComponent } from "../components/CarouselComponent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,7 @@ export default function Home() {
         <h1 className="font-bold text-2xl">I'm Junho</h1>
         <h2 className="font-bold text-sm">Front-End Developer</h2>
         <h3 className="font-bold text-xs">
-          풀스택 개발자를 준비하는 프론트엔드 개발자
+          세상을 이롭게 할 아이디어들을 구현하는 개발자
         </h3>
         <Link
           href="contact"
@@ -51,10 +52,12 @@ export default function Home() {
                       {postData.date}
                     </h1>
                     <h1 className="font-bold">{postData.title}</h1>
-                    <h1>{postData.description}</h1>
-                    <h1 className="rounded-full bg-green-200 px-1 font-light">
-                      {postData.category}
-                    </h1>
+                    <h1 className="text-xs">{postData.description}</h1>
+                    <div className="w-full flex justify-center items-center">
+                      <div className="rounded-full bg-green-200 px-2 font-light">
+                        {postData.category}
+                      </div>
+                    </div>
                   </div>
                 </Link>
               </>
@@ -62,6 +65,10 @@ export default function Home() {
               <></>
             )
           )}
+        </div>
+        <div className="mt-5">
+          <h1 className="font-bold">You may like</h1>
+          <CarouselComponent />
         </div>
       </div>
     </>
