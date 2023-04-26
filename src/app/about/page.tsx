@@ -1,17 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import profileImage from "../../../public/images/profile.png";
 
 export default function Contact() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <Image
-          src={profileImage}
+
+      <Image
+          src="/images/profile.png"
           className="w-40 h-40 rounded-full"
           alt="image"
+          width="64" 
+          height="64"
         />
-        <h1 className="font-bold text-2xl">I'm Junho</h1>
+        <h1 className="font-bold text-2xl">Im Junho</h1>
         <h2 className="font-bold text-sm">Front-End Developer</h2>
         <h3 className="font-bold text-xs">
           세상을 이롭게 할 아이디어들을 구현하는 개발자
