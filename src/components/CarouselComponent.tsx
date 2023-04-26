@@ -5,6 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import PostCardComponent from "./PostCardComponent";
 import data from "../../data/posts.json";
 import Link from "next/link";
+import Image from "next/image";
 
 export const responsive = {
   desktop: {
@@ -42,13 +43,16 @@ export function CarouselComponent() {
       >
         {data.map((postData) => (
           <Link
+            key={postData.path}
             href={`/posts/${postData.path}`}
             className="w-3/4 ease-in duration-300 hover:scale-105 flex flex-col text-center rounded-lg shadow-md shadow-black-100"
           >
-            <div>
-              <img
+            <div className="relative w-full h-40">
+              <Image
+                className="rounded-t-lg"
                 src={`/images/posts/${postData.path}.png`}
                 alt={`${postData.path}`}
+                fill
               />
             </div>
 

@@ -7,6 +7,7 @@ export default function PostCardComponent() {
     <>
       {data.map((postData) => (
         <Link
+          key={postData.path}
           href={`/posts/${postData.path}`}
           className="ease-in duration-300 hover:scale-105 flex flex-col text-center rounded-lg shadow-md shadow-black-100"
         >
