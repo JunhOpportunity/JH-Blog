@@ -5,6 +5,7 @@ export default function Contact() {
   return (
     <>
       <div className="flex flex-col items-center">
+
       <Image
           src="/images/profile.png"
           className="w-40 h-40 rounded-full"
