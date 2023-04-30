@@ -14,8 +14,16 @@ type Props = {
   };
 };
 
+type Data = {
+  title: string;
+  description: string;
+  date: string;
+  path: string;
+};
+
 export default function DetailPage({ params }: Props) {
   const [content, setContent] = useState("");
+  const [data, setData] = useState({});
 
   useEffect(() => {
     fetch(`/data/posts/${params.slug}.md`)
@@ -23,6 +31,15 @@ export default function DetailPage({ params }: Props) {
         return response.text();
       })
       .then((data) => setContent(data));
+    fetch(`/data/posts.json`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) =>
+        data.map((a: Data) => {
+          a.path == params.slug ? setData(a) : null;
+        })
+      );
   }, []);
 
   return (
@@ -36,9 +53,14 @@ export default function DetailPage({ params }: Props) {
         />
       </div>
       {content ? (
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col justify-center items-center bg-gray-200 p-5">
+          <div className="mb-5">
+            <h1 className="font-black text-right text-sky-600">{data.date}</h1>
+            <h1 className="font-black text-4xl">{data.title}</h1>
+            <h1 className="text-xs">{data.description}</h1>
+          </div>
           <ReactMarkdown
-            className="prose"
+            className="prose prose-pre:bg-transparent" 
             children={content}
             components={{
               code({ node, inline, className, children, ...props }) {
