@@ -23,7 +23,12 @@ type Data = {
 
 export default function DetailPage({ params }: Props) {
   const [content, setContent] = useState("");
-  const [data, setData] = useState({});
+  const [data, setData] = useState<Data>({
+    title: "title",
+    description: "description",
+    date: "date",
+    path: "path",
+  });
 
   useEffect(() => {
     fetch(`/data/posts/${params.slug}.md`)
@@ -60,7 +65,7 @@ export default function DetailPage({ params }: Props) {
             <h1 className="text-xs">{data.description}</h1>
           </div>
           <ReactMarkdown
-            className="prose prose-pre:bg-transparent" 
+            className="prose prose-pre:bg-transparent"
             components={{
               code({ node, inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || "");
@@ -70,7 +75,9 @@ export default function DetailPage({ params }: Props) {
                     style={a11yDark}
                     language={match[1]}
                     PreTag="div"
-                  >{children}</SyntaxHighlighter>
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </SyntaxHighlighter>
                 ) : (
                   <code {...props} className={className}>
                     {children}
@@ -78,7 +85,9 @@ export default function DetailPage({ params }: Props) {
                 );
               },
             }}
-          >{content}</ReactMarkdown>
+          >
+            {content}
+          </ReactMarkdown>
         </div>
       ) : (
         <></>

@@ -3,7 +3,7 @@
 // import { sendMail } from "./sendMail";
 import { FaGithub, FaInstagram } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 type eventType = {
   target : {
@@ -29,7 +29,7 @@ export default function Contact() {
       setEmailMessage(value);
     }
   };
-  const onSubmit = async (event: Event) => {
+  const onSubmit = async (event: HTMLFormElement) => {
     event.preventDefault();
     //sendMail({ useEmail, emailSubject, emailMessage });
     fetch("https://node-js-ovbvm.run.goorm.app/api/data", {
@@ -91,7 +91,6 @@ export default function Contact() {
               <input
                 type="submit"
                 placeholder="전송"
-                onClick={onSubmit}
                 className="bg-yellow-500"
               />
             </form>
