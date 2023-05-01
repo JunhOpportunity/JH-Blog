@@ -10,7 +10,7 @@ export default function Contact() {
   const [emailSubject, setEmailSubject] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
 
-  const onChange = (event) => {
+  const onChange = (event: Event) => {
     const {
       target: { value, name },
     } = event;
