@@ -5,12 +5,19 @@ import { FaGithub, FaInstagram } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import React, { useState } from "react";
 
+type eventType = {
+  target : {
+    value : string;
+    name : string;
+  }
+}
+
 export default function Contact() {
   const [useEmail, setUserEmail] = useState("");
   const [emailSubject, setEmailSubject] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
 
-  const onChange = (event: Event) => {
+  const onChange = (event: eventType) => {
     const {
       target: { value, name },
     } = event;
