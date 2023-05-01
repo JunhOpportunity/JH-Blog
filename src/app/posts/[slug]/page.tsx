@@ -40,7 +40,7 @@ export default function DetailPage({ params }: Props) {
           a.path == params.slug ? setData(a) : null;
         })
       );
-  }, []);
+  }, [params]);
 
   return (
     <>
@@ -61,18 +61,16 @@ export default function DetailPage({ params }: Props) {
           </div>
           <ReactMarkdown
             className="prose prose-pre:bg-transparent" 
-            children={content}
             components={{
               code({ node, inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || "");
                 return !inline && match ? (
                   <SyntaxHighlighter
                     {...props}
-                    children={String(children).replace(/\n$/, "")}
                     style={a11yDark}
                     language={match[1]}
                     PreTag="div"
-                  />
+                  >{children}</SyntaxHighlighter>
                 ) : (
                   <code {...props} className={className}>
                     {children}
@@ -80,7 +78,7 @@ export default function DetailPage({ params }: Props) {
                 );
               },
             }}
-          />
+          >{content}</ReactMarkdown>
         </div>
       ) : (
         <></>
