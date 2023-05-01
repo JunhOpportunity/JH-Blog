@@ -64,7 +64,7 @@ export default function Contact() {
         <div className="flex flex-col justify-center items-center gap-2.5">
           <h1 className="text-4xl font-black">Or Send me an Email</h1>
           <div className="rounded-md bg-gray-300 w-96 p-10">
-            <form className="flex flex-col">
+            <form onSubmit={onSubmit} className="flex flex-col">
               <div>당신의 이메일 </div>
               <input
                 name="email"
@@ -91,7 +91,6 @@ export default function Contact() {
               <input
                 type="submit"
                 placeholder="전송"
-                onClick={onSubmit}
                 className="bg-yellow-500"
               />
             </form>
