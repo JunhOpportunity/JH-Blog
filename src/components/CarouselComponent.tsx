@@ -29,6 +29,7 @@ export function CarouselComponent() {
   return (
     <>
       <Carousel
+        className="p-8"
         swipeable={true}
         draggable={true}
         showDots={false}
@@ -45,7 +46,7 @@ export function CarouselComponent() {
           <Link
             key={postData.path}
             href={`/posts/${postData.path}`}
-            className="w-3/4 ease-in duration-300 hover:scale-105 flex flex-col text-center rounded-lg shadow-md shadow-black-100"
+            className="w-4/5 ease-in duration-300 hover:scale-105 flex flex-col text-center rounded-lg shadow-md shadow-black-100"
           >
             <div className="relative w-full h-40">
               <Image

@@ -14,7 +14,6 @@ export default function Contact() {
     const {
       target: { value, name },
     } = event;
-    console.log(name, value);
     if (name == "email") {
       setUserEmail(value);
     } else if (name == "subject") {
@@ -32,8 +31,7 @@ export default function Contact() {
       headers: {
         "Content-type": "application/json",
       },
-    })
-      .then((data) => console.log(data));
+    }).then((data) => console.log(data));
   };
 
   return (
@@ -42,15 +40,17 @@ export default function Contact() {
         <div className="text-center">
           <h1 className="text-4xl font-black mb-4">Contact me</h1>
           <h2 className="text-2xl mb-4">https://velog.io/@junhopportunity</h2>
-          <div className="flex justify-evenly items-center">
-            <div>
-              <FaGithub className="text-5xl hover:scale-105 hover:text-gray-400" />
-            </div>
-            <div>
-              <FaInstagram className="text-5xl hover:scale-105 hover:text-gray-400" />
-            </div>
-            <div>
-              <RiKakaoTalkFill className="text-5xl hover:scale-105 hover:text-gray-400" />
+          <div className="flex justify-evenly">
+            <div className="w-96 flex justify-evenly items-center">
+              <div>
+                <FaGithub className="cursor-pointer text-5xl hover:scale-105 hover:text-gray-400" />
+              </div>
+              <div>
+                <FaInstagram className="cursor-pointer text-5xl hover:scale-105 hover:text-gray-400" />
+              </div>
+              <div>
+                <RiKakaoTalkFill className="cursor-pointer text-5xl hover:scale-105 hover:text-gray-400" />
+              </div>
             </div>
           </div>
         </div>
@@ -61,12 +61,12 @@ export default function Contact() {
               <div>당신의 이메일 </div>
               <input
                 name="email"
-                type="text"
+                type="email"
                 placeholder=""
                 onChange={onChange}
                 value={useEmail}
               />
-              <div>내용</div>
+              <div>제목</div>
               <input
                 name="subject"
                 type="text"
@@ -75,9 +75,8 @@ export default function Contact() {
                 value={emailSubject}
               />
               <div>메시지</div>
-              <input
+              <textarea
                 name="message"
-                type="text"
                 placeholder=""
                 onChange={onChange}
                 value={emailMessage}
